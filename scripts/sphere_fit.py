@@ -51,19 +51,23 @@ def doMath(A,B):
 	params1.zc = z1 
 	params1.radius = r
 
+fil_out_xc = -0.013679489493370056
+fil_out_yc = -0.016949649900197983
+fil_out_zc = 0.47584617137908936
+fil_out_rc = 0.05082815885543823
+
 def filterParams(params):
+	global fil_out_xc
+	global fil_out_yc
+	global fil_out_zc
+	global fil_out_rc
 	# set the first input values
 	fil_in_xc = params1.xc
 	fil_in_yc = params1.yc
 	fil_in_zc = params1.zc
-	fil_in_rc = params1.radius
-	# set the initial guess 
-	fil_out_xc = -0.013679489493370056
-	fil_out_yc = -0.016949649900197983
-	fil_out_zc = 0.47584617137908936
-	fil_out_rc = 0.05082815885543823
+	fil_in_rc = params1.radius 
 	# set the filter gain 
-	fil_gain = 0.01
+	fil_gain = 0.05
 	
 	# do the math for the next filter output values
 	fil_out_xc = fil_gain * fil_in_xc + (1 - fil_gain)*fil_out_xc
